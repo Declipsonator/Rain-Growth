@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "rain-grow",
+  "version": "${version}",
+  "name": "Rain Grow",
+  "description": "Makes crops grow faster in the rain.",
+  "authors": [
+    "Declipsonator"
+  ],
+  "contact": {},
+  "icon": "assets/raingrow/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.declipsonator.raingrow.RainGrow"
+    ]
+  },
+  "mixins": [
+    "rain-grow.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=1.18"
+  }
+}
