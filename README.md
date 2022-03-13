@@ -18,4 +18,4 @@ This is a server side mod that also works in singleplayer. \
 ⚠️This is a **Fabric** only mod and there are no plans to make a forge version. \
 \
 \
-![Example](/copied.png "Example")
+![Example](/rain-growth.gif "Example")
