@@ -33,7 +33,7 @@ public class ServerWorldMixin {
 
         profiler.swap("tickBlocks");
         int randomRainGrowth = thisAsWorld.getGameRules().getInt(RainGrow.RANDOM_RAIN_GROWTH_TICK_SPEED);
-        if (randomTickSpeed > 0) {
+        if (randomTickSpeed > 0 || randomRainGrowth > 0) {
             ChunkSection[] sectionArray = chunk.getSectionArray();
 
             for (ChunkSection chunkSection : sectionArray) {
