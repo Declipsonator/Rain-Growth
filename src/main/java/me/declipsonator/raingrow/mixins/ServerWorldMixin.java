@@ -6,6 +6,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.profiler.Profiler;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.chunk.ChunkSection;
@@ -36,9 +37,12 @@ public class ServerWorldMixin {
         if (randomTickSpeed > 0 || randomRainGrowth > 0) {
             ChunkSection[] sectionArray = chunk.getSectionArray();
 
-            for (ChunkSection chunkSection : sectionArray) {
+            for (int m = 0; m < sectionArray.length; ++m) {
+                ChunkSection chunkSection = sectionArray[m];
                 if (chunkSection.hasRandomTicks()) {
-                    int yOffset = chunkSection.getYOffset();
+                    if (!chunkSection.hasRandomTicks()) continue;
+                    int k = chunk.sectionIndexToCoord(m);
+                    int yOffset = ChunkSectionPos.getBlockCoord(k);
 
                     for (int l = 0; l < Math.max(randomTickSpeed, randomRainGrowth); ++l) {
                         BlockPos blockPos = thisAsWorld.getRandomPosInChunk(startX, yOffset, startZ, 15);
