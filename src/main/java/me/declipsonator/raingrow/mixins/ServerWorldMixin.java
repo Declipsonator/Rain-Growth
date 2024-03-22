@@ -8,11 +8,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.profiler.Profiler;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.chunk.WorldChunk;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -79,6 +78,7 @@ public class ServerWorldMixin {
         ci.cancel();
     }
 
+    @Unique
     private boolean shouldTreatAsCrop(Block block) {
         return block instanceof CropBlock ||
                 block instanceof SaplingBlock ||
@@ -86,6 +86,7 @@ public class ServerWorldMixin {
                 block instanceof BambooBlock ||
                 block instanceof BambooSaplingBlock ||
                 block instanceof CocoaBlock ||
-                block instanceof SweetBerryBushBlock;
+                block instanceof SweetBerryBushBlock ||
+                block instanceof StemBlock;
     }
 }
